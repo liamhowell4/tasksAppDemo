@@ -24,7 +24,8 @@ class RegisterViewModel: ObservableObject {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in guard let userID = result?.user.uid else {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in 
+            guard let userID = result?.user.uid else {
                 return
             }
             
@@ -43,7 +44,7 @@ class RegisterViewModel: ObservableObject {
             
         db.collection("users")
             .document(id)
-            .setData()
+            .setData(newUser.asDictionary())
     }
     
     private func validate() -> Bool {

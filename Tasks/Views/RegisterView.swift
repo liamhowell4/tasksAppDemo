@@ -21,19 +21,21 @@ struct RegisterView: View {
                 
                 // Login Form
                 Form{
-                    TextField("Your Name", text: viewModel.$name)
+                    TextField("Your Name", text: $viewModel.name)
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
-                    TextField("Your Email", text: viewModel.$email)
+                    TextField("Your Email", text: $viewModel.email)
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
                         .autocapitalization(.none)
-                    SecureField("Password", text: viewModel.$password)
+                    SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(DefaultTextFieldStyle())
                     
                     TLButton(title: "Create Account", background: .green) {
                         //Attempt Registration
+                        viewModel.register()
                     }
+                    
                     
 //
                     
